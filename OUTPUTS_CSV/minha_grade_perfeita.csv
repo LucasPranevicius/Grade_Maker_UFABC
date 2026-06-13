@@ -1,0 +1,16 @@
+Codigo,Dia,Horario,Quinzena,Turno,Campus,Materia_Ideal,Status_Recomendacao,Nome
+BIN0406-15,Segunda,19:00-21:00,Semanal,Noturno,SBC,Introdução à Probabilidade e à Estatística,Todas Atendidas ✅,Introdução à Probabilidade e à Estatística
+BCN0407-15,Segunda,21:00-23:00,Semanal,Noturno,SBC,Funções de Várias Variáveis,Faltam Recomendações ⚠️,Funções de Várias Variáveis
+BCM0506-15,Terça,19:00-21:00,Semanal,Noturno,SBC,Comunicação e Redes,Todas Atendidas ✅,Comunicação e Redes
+BCN0405-15,Terça,21:00-23:00,Semanal,Noturno,SBC,Introdução às Equações Diferenciais Ordinárias,Faltam Recomendações ⚠️,Introdução às Equações Diferenciais Ordinárias
+BCJ0205-15,Quarta,19:00-21:00,Semanal,Noturno,SBC,Fenômenos Térmicos,Todas Atendidas ✅,Fenômenos Térmicos
+BCJ0203-15,Quarta,21:00-23:00,I,Noturno,SBC,Fenômenos Eletromagnéticos,Faltam Recomendações ⚠️,Fenômenos Eletromagnéticos
+BCJ0203-15,Quarta,21:00-23:00,II,Noturno,SBC,Fenômenos Eletromagnéticos,Faltam Recomendações ⚠️,Fenômenos Eletromagnéticos
+BCM0506-15,Quinta,19:00-21:00,II,Noturno,SBC,Comunicação e Redes,Todas Atendidas ✅,Comunicação e Redes
+BIN0406-15,Quinta,19:00-21:00,I,Noturno,SBC,Introdução à Probabilidade e à Estatística,Todas Atendidas ✅,Introdução à Probabilidade e à Estatística
+BCM0506-15,Quinta,21:00-23:00,II,Noturno,SBC,Comunicação e Redes,Todas Atendidas ✅,Comunicação e Redes
+BIN0406-15,Quinta,21:00-23:00,I,Noturno,SBC,Introdução à Probabilidade e à Estatística,Todas Atendidas ✅,Introdução à Probabilidade e à Estatística
+BCJ0205-15,Sexta,19:00-21:00,I,Noturno,SBC,Fenômenos Térmicos,Todas Atendidas ✅,Fenômenos Térmicos
+BIR0004-15,Sexta,19:00-21:00,II,Noturno,SBC,Bases Epistem,Faltam Recomendações ⚠️,Bases Epistem
+BCJ0205-15,Sexta,21:00-23:00,I,Noturno,SBC,Fenômenos Térmicos,Todas Atendidas ✅,Fenômenos Térmicos
+BCJ0205-15,Sexta,21:00-23:00,II,Noturno,SBC,Fenômenos Térmicos,Todas Atendidas ✅,Fenômenos Térmicos
