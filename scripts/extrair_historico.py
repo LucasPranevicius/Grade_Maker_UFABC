@@ -11,8 +11,7 @@ def extrair_grade_perfeita(pdf_path):
         "MATR", "CUMP", "DISP", "TRANS", "INCORP", "CANC", "TRANC"
     ]
     situacoes_reprovacao = [
-        "REP", "REPF", "REPMF", "REPN", "REPNF",
-        "MATR", "CANC", "TRANC"
+        "REP", "REPF", "REPMF", "REPN", "REPNF", "CANC", "TRANC"
     ]
 
     print(f"Lendo e alinhando colunas do histórico: {pdf_path}...")
