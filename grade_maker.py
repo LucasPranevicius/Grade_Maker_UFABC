@@ -11,7 +11,7 @@ MEU_HISTORICO_PDF = "historico_11202322044.pdf"
 TURMAS_OFERTADAS_PDF = "ajuste_matriculas_2026_2_turmas_v2.pdf"
 
 # 2. Preferências Logísticas da Grade
-MEU_CAMPUS = "AMBOS"       # Opções: "SBC", "SA" ou "AMBOS"
+MEU_CAMPUS = "SBC"       # Opções: "SBC", "SA" ou "AMBOS"
 MEU_TURNO = "QUALQUER"    # Opções: "Noturno", "Matutino", "Vespertino" ou "QUALQUER"
 
 # 3. Ficheiros Fixos (Dentro da pasta data/)

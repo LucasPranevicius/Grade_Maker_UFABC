@@ -1,6 +1,5 @@
 import pandas as pd
 import re
-import os
 
 def gerar_roadmap_formatura(csv_pendentes, csv_feitas, pdf_catalogo, output_csv="OUTPUTS_CSV/trilha_formatura.csv"):
     print("\n🔮 Iniciando a simulação do Roadmap de Formatura...")
@@ -12,10 +11,8 @@ def gerar_roadmap_formatura(csv_pendentes, csv_feitas, pdf_catalogo, output_csv=
         print("❌ Erro: CSVs não encontrados. Rode os passos iniciais primeiro.")
         return pd.DataFrame()
 
-    # Guarda os nomes das matérias que você já fez em minúsculo para dar "match" nas recomendações
-    feitas_nomes = set(df_feitas['Materia'].str.lower().tolist())
+    feitas_nomes = set(df_feitas['Materia'].str.lower().str.strip().tolist())
 
-    # Tenta importar o extrator de recomendações que criamos no avaliar_prioridades.py
     try:
         from scripts.avaliar_prioridades import extrair_recomendacoes_catalogo
         mapa_recs = extrair_recomendacoes_catalogo(pdf_catalogo)
@@ -27,12 +24,10 @@ def gerar_roadmap_formatura(csv_pendentes, csv_feitas, pdf_catalogo, output_csv=
     quadrimestres = []
     num_quad = 1
     
-    # Limites logísticos
     max_materias_noturno = 5
-    max_materias_misto = 6 # Misto aguenta uma carga maior
+    max_materias_misto = 6 
 
     while pendentes:
-        # Define o perfil do Quadrimestre simulado
         if num_quad == 1:
             limite = max_materias_noturno
             nome_quad = "Quadrimestre 1 (Noturno)"
@@ -42,7 +37,6 @@ def gerar_roadmap_formatura(csv_pendentes, csv_feitas, pdf_catalogo, output_csv=
 
         disponiveis = []
         
-        # Procura quais matérias você já tem bagagem para fazer
         for mat in pendentes:
             codigo = mat['Codigo']
             recs = mapa_recs.get(codigo, [])
@@ -50,7 +44,6 @@ def gerar_roadmap_formatura(csv_pendentes, csv_feitas, pdf_catalogo, output_csv=
             atendidas = True
             for r in recs:
                 r_limpa = re.sub(r"^(requisitos?|co-requisitos?|recomenda-se|disciplinas?):\s*", "", r, flags=re.IGNORECASE).strip().lower()
-                # Se a recomendação não estiver na sua lista de feitas, a matéria fica trancada
                 if not any(r_limpa in f or f in r_limpa for f in feitas_nomes):
                     atendidas = False
                     break
@@ -58,25 +51,25 @@ def gerar_roadmap_formatura(csv_pendentes, csv_feitas, pdf_catalogo, output_csv=
             if atendidas:
                 disponiveis.append(mat)
 
-        # Sistema anti-travamento: Se o catálogo tiver um "tranca-grade" que a regex não pegou bem,
-        # e nenhuma matéria ficar disponível, ele força a liberação das matérias do topo da lista
         if not disponiveis:
             disponiveis = pendentes[:limite]
 
-        # Seleciona as matérias até o limite do quadrimestre
         escolhidas = disponiveis[:limite]
 
-        # Injeta as OLs para completar a carga horária se você tiver poucas obrigatórias liberadas
         vagas_sobrando = limite - len(escolhidas)
-        if pendentes: # Só adiciona OL se você ainda não estiver no final do curso
+        if pendentes: 
             for _ in range(vagas_sobrando):
-                escolhidas.append({"Codigo": "OL", "Materia_Ideal": "Opção Limitada / Livre"})
+                escolhidas.append({
+                    "Codigo": "OL", 
+                    "Materia_Ideal": "Opção Limitada / Livre", 
+                    "Creditos": 4 # OL média
+                })
 
         creditos_quad = 0
         
         for mat in escolhidas:
-            # Na UFABC a média é 4 créditos por matéria (algumas 2, algumas 6)
-            creditos = 4 
+            # Agora puxamos o crédito REAL do PDF (ou 4 para as OLs geradas na hora)
+            creditos = int(mat.get('Creditos', 4))
             creditos_quad += creditos
             
             nome_disciplina = mat.get('Materia_Ideal', mat.get('Nome', 'OL'))
@@ -85,25 +78,22 @@ def gerar_roadmap_formatura(csv_pendentes, csv_feitas, pdf_catalogo, output_csv=
                 "Quadrimestre": nome_quad,
                 "Codigo": mat['Codigo'],
                 "Disciplina": nome_disciplina,
-                "Creditos_Estimados": creditos
+                "Creditos": creditos
             })
             
-            # O pulo do gato: Adiciona a matéria na lista de "feitas" para que 
-            # no próximo loop do quadrimestre ela destranque as cadeias seguintes!
             if mat['Codigo'] != "OL":
                 pendentes.remove(mat)
                 feitas_nomes.add(str(nome_disciplina).lower())
 
-        # Adiciona uma linha de resumo do quadrimestre
         quadrimestres.append({
             "Quadrimestre": nome_quad,
             "Codigo": "---",
-            "Disciplina": f"✅ TOTAL ESTIMADO: {creditos_quad} CRÉDITOS",
-            "Creditos_Estimados": creditos_quad
+            "Disciplina": f"✅ TOTAL ESTIMADO DO QUADRIMESTRE",
+            "Creditos": creditos_quad
         })
 
         num_quad += 1
-        if num_quad > 20: # Trava de segurança para loop infinito
+        if num_quad > 20: 
             break
 
     df_trilha = pd.DataFrame(quadrimestres)
@@ -111,19 +101,11 @@ def gerar_roadmap_formatura(csv_pendentes, csv_feitas, pdf_catalogo, output_csv=
     
     print(f"✅ Roadmap completo gerado! Salvo em: {output_csv}")
     
-    # Imprime os dois primeiros quadrimestres no terminal para você ter um gosto
     print("\n" + "="*60)
     print("🎓 PREVISÃO DOS SEUS PRÓXIMOS PASSOS".center(60))
     print("="*60)
     resumo = df_trilha[df_trilha['Quadrimestre'].str.contains("1 |2 ")]
-    print(resumo[['Quadrimestre', 'Codigo', 'Disciplina']].to_string(index=False))
+    print(resumo[['Quadrimestre', 'Codigo', 'Disciplina', 'Creditos']].to_string(index=False))
     print("="*60)
     
     return df_trilha
-
-if __name__ == "__main__":
-    gerar_roadmap_formatura(
-        "OUTPUTS_CSV/materias_pendentes.csv", 
-        "OUTPUTS_CSV/materias_feitas.csv", 
-        "data/catalogo_disciplinas_graduacao_2024_2025.csv"
-    )
