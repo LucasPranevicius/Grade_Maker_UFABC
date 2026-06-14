@@ -1,0 +1,29 @@
+Codigo,Dia,Horario,Quinzena,Turno,Campus,Materia_Ideal,Creditos,Status_Recomendacao,Nome
+ESAE001-23,Segunda,08:00-10:00,Semanal,Matutino,SBC,Aplicações  Estruturais de  Materiais  Compósitos  ESTA,4,Faltam Recomendações ⚠️,Aplicações  Estruturais de  Materiais  Compósitos  ESTA
+ESTG011-17,Segunda,10:00-12:00,Semanal,Matutino,SBC,Estatística  Aplicada a  Sistemas de  Gestão  ESTG,4,Todas Atendidas ✅,Estatística  Aplicada a  Sistemas de  Gestão  ESTG
+BCN0407-15,Segunda,16:00-18:00,Semanal,Matutino,SBC,Funções de Várias Variáveis,4,Faltam Recomendações ⚠️,Funções de Várias Variáveis
+ESTB013-17,Segunda,19:00-21:00,Semanal,Noturno,SBC,-  Biossegurança  ESTB,4,Faltam Recomendações ⚠️,-  Biossegurança  ESTB
+ESTB023-17,Segunda,21:00-23:00,Semanal,Noturno,SBC,-  Física Médica I  ESTB,4,Faltam Recomendações ⚠️,-  Física Médica I  ESTB
+ESTO004-17,Terça,08:00-10:00,I,Matutino,SBC,Instrumentação e  Controle,4,Faltam Recomendações ⚠️,Instrumentação e  Controle
+ESTO004-17,Terça,08:00-10:00,II,Matutino,SBC,Instrumentação e  Controle,4,Faltam Recomendações ⚠️,Instrumentação e  Controle
+ESTA019-17,Terça,10:00-12:00,Semanal,Matutino,SBC,Projeto  Assistido por  Computador  T-P-E-I,4,Todas Atendidas ✅,Projeto  Assistido por  Computador  T-P-E-I
+ESTO004-17,Terça,19:00-21:00,I,Noturno,SBC,Instrumentação e  Controle,4,Faltam Recomendações ⚠️,Instrumentação e  Controle
+ESTO004-17,Terça,19:00-21:00,II,Noturno,SBC,Instrumentação e  Controle,4,Faltam Recomendações ⚠️,Instrumentação e  Controle
+ESTO008-17,Terça,21:00-23:00,Semanal,Noturno,SBC,Mecânica dos Sólidos I,4,Faltam Recomendações ⚠️,Mecânica dos Sólidos I
+ESTB005-17,Quarta,08:00-10:00,Semanal,Matutino,SBC,-  Ciência dos  Materiais  Biocompatíveis  Opção limitada  da Engenharia  Biomédica,4,Todas Atendidas ✅,-  Ciência dos  Materiais  Biocompatíveis  Opção limitada  da Engenharia  Biomédica
+BCJ0203-15,Quarta,10:00-12:00,I,Matutino,SBC,Fenômenos Eletromagnéticos,5,Faltam Recomendações ⚠️,Fenômenos Eletromagnéticos
+ESTO001-17,Quarta,10:00-12:00,II,Matutino,SBC,Circuitos Elétricos e  Fotônica,4,Faltam Recomendações ⚠️,Circuitos Elétricos e  Fotônica
+BCJ0203-15,Quarta,19:00-21:00,I,Noturno,SBC,Fenômenos Eletromagnéticos,5,Faltam Recomendações ⚠️,Fenômenos Eletromagnéticos
+BCJ0203-15,Quarta,21:00-23:00,I,Noturno,SBC,Fenômenos Eletromagnéticos,5,Faltam Recomendações ⚠️,Fenômenos Eletromagnéticos
+BCJ0203-15,Quarta,21:00-23:00,II,Noturno,SBC,Fenômenos Eletromagnéticos,5,Faltam Recomendações ⚠️,Fenômenos Eletromagnéticos
+ESTA003-17,Quinta,08:00-10:00,Semanal,Matutino,SBC,Sistemas de Controle I,5,Faltam Recomendações ⚠️,Sistemas de Controle I
+ESTO013-17,Quinta,10:00-12:00,Semanal,Matutino,SBC,Engenharia Econômica,4,Todas Atendidas ✅,Engenharia Econômica
+ESTA007-17,Quinta,14:00-16:00,Semanal,Matutino,SBC,Eletrônica Analógica  Aplicada,5,Faltam Recomendações ⚠️,Eletrônica Analógica  Aplicada
+ESTB028-17,Quinta,19:00-21:00,Semanal,Noturno,SBC,-  Equipamentos  Médico- Hospitalares  Opção limitada  da Engenharia  Biomédica,4,Faltam Recomendações ⚠️,-  Equipamentos  Médico- Hospitalares  Opção limitada  da Engenharia  Biomédica
+ESTS017-17,Quinta,21:00-23:00,Semanal,Noturno,SBC,Sistemas de  Propulsão I  ESTS,4,Faltam Recomendações ⚠️,Sistemas de  Propulsão I  ESTS
+BCN0405-15,Sexta,08:00-10:00,Semanal,Matutino,SBC,Introdução às Equações Diferenciais Ordinárias,4,Faltam Recomendações ⚠️,Introdução às Equações Diferenciais Ordinárias
+ESTB005-17,Sexta,10:00-12:00,I,Matutino,SBC,-  Ciência dos  Materiais  Biocompatíveis  Opção limitada  da Engenharia  Biomédica,4,Todas Atendidas ✅,-  Ciência dos  Materiais  Biocompatíveis  Opção limitada  da Engenharia  Biomédica
+ESTB005-17,Sexta,10:00-12:00,II,Matutino,SBC,-  Ciência dos  Materiais  Biocompatíveis  Opção limitada  da Engenharia  Biomédica,4,Todas Atendidas ✅,-  Ciência dos  Materiais  Biocompatíveis  Opção limitada  da Engenharia  Biomédica
+BIR0004-15,Sexta,19:00-21:00,II,Noturno,SBC,Bases Epistemológicas da Ciência Moderna,3,Faltam Recomendações ⚠️,Bases Epistemológicas da Ciência Moderna
+ESTB005-17,Sexta,21:00-23:00,I,Noturno,SBC,-  Ciência dos  Materiais  Biocompatíveis  Opção limitada  da Engenharia  Biomédica,4,Todas Atendidas ✅,-  Ciência dos  Materiais  Biocompatíveis  Opção limitada  da Engenharia  Biomédica
+ESTB005-17,Sexta,21:00-23:00,II,Noturno,SBC,-  Ciência dos  Materiais  Biocompatíveis  Opção limitada  da Engenharia  Biomédica,4,Todas Atendidas ✅,-  Ciência dos  Materiais  Biocompatíveis  Opção limitada  da Engenharia  Biomédica
