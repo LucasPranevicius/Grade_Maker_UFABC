@@ -45,12 +45,13 @@ def iniciar_automacao():
         from scripts.gerar_pendentes import extrair_grade_ideal, identificar_pendencias
         from scripts.avaliar_prioridades import extrair_recomendacoes_catalogo, classificar_pendencias
         from scripts.montar_grade import extrair_turmas_ofertadas, simular_montagem_grade
-        
+        from scripts.formatura_simulator import gerar_roadmap_formatura
+
         # Estratégia à prova de falhas para o nome do ficheiro de visualização (com S ou com Z)
         try:
             from scripts.gerar_visualizacao import criar_grade_visual
         except ImportError:
-            from scripts.gerar_vizualizacao import criar_grade_visual
+            from scripts.gerar_visualizacao import criar_grade_visual
             
     except ImportError as e:
         print(f"\n❌ Erro de Importação: O Python não encontrou um dos teus scripts na pasta 'scripts/'.")
@@ -85,6 +86,11 @@ def iniciar_automacao():
     mapa_recs = extrair_recomendacoes_catalogo(CATALOGO_PDF)
     df_prioridades = classificar_pendencias(CSV_PENDENTES, CSV_FEITAS, mapa_recs)
     df_prioridades.to_csv(CSV_PENDENTES, index=False, encoding="utf-8")
+
+    # ---------------------------------------------------------
+    # PASSO 3.5: Planejamento de Longo Prazo (Roadmap Ideal)
+    # ---------------------------------------------------------
+    gerar_roadmap_formatura(CSV_PENDENTES, CSV_FEITAS, CATALOGO_PDF)
 
     # ---------------------------------------------------------
     # PASSO 4: Encaixe Guloso no Tabuleiro (Motor de Grade)

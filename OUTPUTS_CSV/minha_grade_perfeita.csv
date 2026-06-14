@@ -1,0 +1,33 @@
+Codigo,Dia,Horario,Quinzena,Turno,Campus,Materia_Ideal,Status_Recomendacao,Nome
+ESAE001-23,Segunda,08:00-10:00,Semanal,Matutino,SBC,Aplicações Estruturais de Materiais Compósitos,Faltam Recomendações ⚠️,Aplicações Estruturais de Materiais Compósitos
+ESTG011-17,Segunda,10:00-12:00,Semanal,Matutino,SBC,Estatística aplicada a sistemas de gestão,Todas Atendidas ✅,Estatística aplicada a sistemas de gestão
+BCN0407-15,Segunda,16:00-18:00,Semanal,Matutino,SA,Funções de Várias Variáveis,Faltam Recomendações ⚠️,Funções de Várias Variáveis
+ESTA006-17,Segunda,19:00-21:00,I,Noturno,SA,Fotônica  Opção  Limitada   da Engenharia   ou,Faltam Recomendações ⚠️,Fotônica  Opção  Limitada   da Engenharia   ou
+ESTA006-17,Segunda,19:00-21:00,II,Noturno,SA,Fotônica  Opção  Limitada   da Engenharia   ou,Faltam Recomendações ⚠️,Fotônica  Opção  Limitada   da Engenharia   ou
+ESTA006-17,Segunda,21:00-23:00,II,Noturno,SA,Fotônica  Opção  Limitada   da Engenharia   ou,Faltam Recomendações ⚠️,Fotônica  Opção  Limitada   da Engenharia   ou
+ESTA002-17,Terça,08:00-10:00,Semanal,Matutino,SA,Circuitos  Elétricos I  ESTA,Faltam Recomendações ⚠️,Circuitos  Elétricos I  ESTA
+ESTA019-17,Terça,10:00-12:00,Semanal,Matutino,SBC,Projeto  Assistido por  Computador  T-P-E-I,Todas Atendidas ✅,Projeto  Assistido por  Computador  T-P-E-I
+ESTA014-17,Terça,14:00-16:00,Semanal,Matutino,SA,Sistemas  CAD,Todas Atendidas ✅,Sistemas  CAD
+ESTA016-17,Terça,16:00-18:00,Semanal,Matutino,SA,Máquinas  Elétricas  ESMA,Faltam Recomendações ⚠️,Máquinas  Elétricas  ESMA
+ESTU009-17,Terça,19:00-21:00,II,Noturno,SA,Hidr,Todas Atendidas ✅,Hidr
+ESTO004-17,Terça,19:00-21:00,I,Noturno,SBC,Instrumentação e Contr,Faltam Recomendações ⚠️,Instrumentação e Contr
+ESTU009-17,Terça,21:00-23:00,I,Noturno,SA,Hidr,Todas Atendidas ✅,Hidr
+ESTU009-17,Terça,21:00-23:00,II,Noturno,SA,Hidr,Todas Atendidas ✅,Hidr
+ESTB005-17,Quarta,08:00-10:00,Semanal,Matutino,SBC,Ciência dos Materiais Biocompatíveis,Todas Atendidas ✅,Ciência dos Materiais Biocompatíveis
+BCJ0203-15,Quarta,10:00-12:00,I,Matutino,SA,Fenômenos Eletromagnéticos,Faltam Recomendações ⚠️,Fenômenos Eletromagnéticos
+BCJ0203-15,Quarta,10:00-12:00,II,Matutino,SA,Fenômenos Eletromagnéticos,Faltam Recomendações ⚠️,Fenômenos Eletromagnéticos
+MCTB009-17,Quarta,19:00-21:00,Semanal,Noturno,SA,Cálculo Numérico,Todas Atendidas ✅,Cálculo Numérico
+BCJ0203-15,Quarta,21:00-23:00,II,Noturno,SA,Fenômenos Eletromagnéticos,Faltam Recomendações ⚠️,Fenômenos Eletromagnéticos
+BCJ0203-15,Quarta,21:00-23:00,I,Noturno,SA,Fenômenos Eletromagnéticos,Faltam Recomendações ⚠️,Fenômenos Eletromagnéticos
+ESTA023-17,Quinta,08:00-10:00,Semanal,Matutino,SA,Introdução aos  Processos de  Fabricação  ESTA,Todas Atendidas ✅,Introdução aos  Processos de  Fabricação  ESTA
+ESTO013-17,Quinta,10:00-12:00,Semanal,Matutino,SBC,Engenharia Econômica,Todas Atendidas ✅,Engenharia Econômica
+ESTA007-17,Quinta,14:00-16:00,Semanal,Matutino,SBC,Eletrônica  Analógica  Aplicada  ESMA,Faltam Recomendações ⚠️,Eletrônica  Analógica  Aplicada  ESMA
+ESTA013-17,Quinta,16:00-18:00,Semanal,Matutino,SA,Fundamentos  de Robótica  ESTA,Faltam Recomendações ⚠️,Fundamentos  de Robótica  ESTA
+ESTB023-17,Quinta,19:00-21:00,Semanal,Noturno,SBC,Física Médica I,Faltam Recomendações ⚠️,Física Médica I
+ESTA003-17,Quinta,21:00-23:00,Semanal,Noturno,SBC,Sistemas   de Contr,Faltam Recomendações ⚠️,Sistemas   de Contr
+ESTU009-17,Sexta,08:00-10:00,Semanal,Matutino,SA,Hidr,Todas Atendidas ✅,Hidr
+ESTB005-17,Sexta,10:00-12:00,I,Matutino,SBC,Ciência dos Materiais Biocompatíveis,Todas Atendidas ✅,Ciência dos Materiais Biocompatíveis
+ESTB005-17,Sexta,10:00-12:00,II,Matutino,SBC,Ciência dos Materiais Biocompatíveis,Todas Atendidas ✅,Ciência dos Materiais Biocompatíveis
+BCN0405-15,Sexta,19:00-21:00,Semanal,Noturno,SA,Introdução às Equações Diferenciais Ordinárias,Faltam Recomendações ⚠️,Introdução às Equações Diferenciais Ordinárias
+ESTB005-17,Sexta,21:00-23:00,I,Noturno,SBC,Ciência dos Materiais Biocompatíveis,Todas Atendidas ✅,Ciência dos Materiais Biocompatíveis
+ESTB005-17,Sexta,21:00-23:00,II,Noturno,SBC,Ciência dos Materiais Biocompatíveis,Todas Atendidas ✅,Ciência dos Materiais Biocompatíveis
