@@ -3,18 +3,19 @@ import os
 import pandas as pd
 
 # ====================================================================
-# ⚙️ PAINEL DE CONTROLO CENTRAL (Altera APENAS aqui a cada quadrimestre!)
+# ⚙️ PAINEL DE CONTROLE CENTRAL (Altere APENAS aqui todo quadrimestre!)
 # ====================================================================
 
-# 1. Ficheiros Variáveis (Na raiz do projeto)
+# 1. Arquivos Variáveis (Na raiz do projeto)
 MEU_HISTORICO_PDF = "historico_11202322044.pdf"
 TURMAS_OFERTADAS_PDF = "ajuste_matriculas_2026_2_turmas_v2.pdf"
 
 # 2. Preferências Logísticas da Grade
 MEU_CAMPUS = "SBC"       # Opções: "SBC", "SA" ou "AMBOS"
-MEU_TURNO = "QUALQUER"    # Opções: "Noturno", "Matutino", "Vespertino" ou "QUALQUER"
+MEU_TURNO = "Noturno"   # Opções: "Noturno", "Matutino", "Vespertino" ou "QUALQUER"
+MEU_LIMITE_CREDITOS = 22 # Limite da mochila! A UFABC recomenda entre 20 e 24.
 
-# 3. Ficheiros Fixos (Dentro da pasta data/)
+# 3. Arquivos Fixos (Dentro da pasta data/)
 GRADE_IDEAL_PDF = "data/ordem_do_dia_-_anexo_1b.pdf"
 CATALOGO_PDF = "data/catalogo_disciplinas_graduacao_2024_2025.pdf"
 
@@ -22,16 +23,15 @@ CATALOGO_PDF = "data/catalogo_disciplinas_graduacao_2024_2025.pdf"
 # 📂 CONFIGURAÇÃO DE PASTAS DE SAÍDA
 # ====================================================================
 PASTA_CSV = "OUTPUTS_CSV"
-os.makedirs(PASTA_CSV, exist_ok=True)  # Cria a pasta automaticamente se não existir
+os.makedirs(PASTA_CSV, exist_ok=True) 
 
-# Caminhos dos ficheiros gerados com barras universais
 CSV_FEITAS = f"{PASTA_CSV}/materias_feitas.csv"
 CSV_PENDENTES = f"{PASTA_CSV}/materias_pendentes.csv"
 CSV_GRADE = f"{PASTA_CSV}/minha_grade_perfeita.csv"
 PLANILHA_EXCEL = f"{PASTA_CSV}/Grade_Pronta_{MEU_TURNO}_{MEU_CAMPUS}.xlsx"
 
 # ====================================================================
-# 🚀 MOTOR DE ORQUESTRAÇÃO (Não precisas de mexer daqui para baixo)
+# 🚀 MOTOR DE ORQUESTRAÇÃO
 # ====================================================================
 
 def iniciar_automacao():
@@ -39,75 +39,110 @@ def iniciar_automacao():
     print("🚀 INICIANDO O GRADE MAKER UFABC 🚀".center(70))
     print("="*70)
 
-    # Importando os módulos da pasta 'scripts'
+    # Importando os módulos
     try:
         from scripts.extrair_historico import extrair_grade_perfeita
         from scripts.gerar_pendentes import extrair_grade_ideal, identificar_pendencias
         from scripts.avaliar_prioridades import extrair_recomendacoes_catalogo, classificar_pendencias
         from scripts.montar_grade import extrair_turmas_ofertadas, simular_montagem_grade
-        from scripts.formatura_simulator import gerar_roadmap_formatura
+        
+        # Tenta importar o Roadmap (se você o tiver)
+        try:
+            from scripts.planejar_formatura import gerar_roadmap_formatura
+        except ImportError:
+            gerar_roadmap_formatura = None
 
-        # Estratégia à prova de falhas para o nome do ficheiro de visualização (com S ou com Z)
+        # Estratégia à prova de falhas para o nome da visualização
         try:
             from scripts.gerar_visualizacao import criar_grade_visual
         except ImportError:
-            from scripts.gerar_visualizacao import criar_grade_visual
+            from scripts.gerar_vizualizacao import criar_grade_visual
             
     except ImportError as e:
-        print(f"\n❌ Erro de Importação: O Python não encontrou um dos teus scripts na pasta 'scripts/'.")
-        print(f"Detalhe do erro: {e}")
+        print(f"\n❌ Erro de Importação na pasta 'scripts/'. Detalhe: {e}")
         sys.exit(1)
 
     # ---------------------------------------------------------
-    # PASSO 1: Mapear o Histórico
+    # PASSO 1: Histórico
     # ---------------------------------------------------------
-    print("\n[1/5] A extrair o teu histórico atualizado...")
+    print("\n[1/5] Extraindo seu histórico atualizado...")
     df_feitas = extrair_grade_perfeita(MEU_HISTORICO_PDF)
     if df_feitas.empty:
-        print("❌ Falha ao extrair histórico. Verifica o ficheiro.")
+        print("❌ Falha ao extrair histórico.")
         return
     df_feitas.to_csv(CSV_FEITAS, index=False, encoding="utf-8")
 
     # ---------------------------------------------------------
-    # PASSO 2: Cruzar com a Grade Ideal (Aeroespacial)
+    # PASSO 2: Grade Ideal
     # ---------------------------------------------------------
-    print("\n[2/5] A calcular disciplinas pendentes para a tua formatura...")
+    print("\n[2/5] Calculando disciplinas pendentes...")
     df_ideal = extrair_grade_ideal(GRADE_IDEAL_PDF)
     df_pendentes = identificar_pendencias(CSV_FEITAS, df_ideal)
     if df_pendentes.empty:
-        print("✅ Já concluíste todas as matérias obrigatórias! A abortar montagem.")
+        print("✅ Você já concluiu todas as matérias! Abortando.")
         return
     df_pendentes.to_csv(CSV_PENDENTES, index=False, encoding="utf-8")
 
     # ---------------------------------------------------------
-    # PASSO 3: Inteligência de Recomendações (Tranca-Grade)
+    # PASSO 3: Recomendações
     # ---------------------------------------------------------
-    print("\n[3/5] A analisar catálogo para definir prioridades (Peso 1 e Peso 2)...")
+    print("\n[3/5] Analisando catálogo para definir prioridades...")
     mapa_recs = extrair_recomendacoes_catalogo(CATALOGO_PDF)
     df_prioridades = classificar_pendencias(CSV_PENDENTES, CSV_FEITAS, mapa_recs)
     df_prioridades.to_csv(CSV_PENDENTES, index=False, encoding="utf-8")
 
     # ---------------------------------------------------------
-    # PASSO 3.5: Planejamento de Longo Prazo (Roadmap Ideal)
+    # PASSO 3.5: Roadmap Ideal (Opcional)
     # ---------------------------------------------------------
-    gerar_roadmap_formatura(CSV_PENDENTES, CSV_FEITAS, CATALOGO_PDF)
+    if gerar_roadmap_formatura:
+        gerar_roadmap_formatura(CSV_PENDENTES, CSV_FEITAS, CATALOGO_PDF)
 
     # ---------------------------------------------------------
-    # PASSO 4: Encaixe Guloso no Tabuleiro (Motor de Grade)
+    # PASSO 4: Montar Grade
     # ---------------------------------------------------------
-    print(f"\n[4/5] A caçar ofertas e a montar a grade ({MEU_TURNO} em {MEU_CAMPUS})...")
+    print(f"\n[4/5] Caçando ofertas ({MEU_TURNO} em {MEU_CAMPUS} | Max: {MEU_LIMITE_CREDITOS} Créditos)...")
     df_ofertas = extrair_turmas_ofertadas(TURMAS_OFERTADAS_PDF)
-    df_minha_grade = simular_montagem_grade(df_ofertas, CSV_PENDENTES, MEU_CAMPUS, MEU_TURNO)
+    df_minha_grade = simular_montagem_grade(df_ofertas, CSV_PENDENTES, MEU_CAMPUS, MEU_TURNO, MEU_LIMITE_CREDITOS)
     
     if df_minha_grade.empty:
         print("\n❌ Não foi possível montar uma grade válida com estes filtros.")
         return
     df_minha_grade.to_csv(CSV_GRADE, index=False, encoding="utf-8")
 
+    # =========================================================
+    # 🎒 RESUMO NO TERMINAL: LISTA DE MATÉRIAS E CRÉDITOS
+    # =========================================================
+    print("\n" + "-"*65)
+    print("🎒 RESUMO DA SUA MOCHILA DE MATÉRIAS".center(65))
+    print("-"*65)
+    
+    # Isola uma linha por matéria (ignora dias duplicados para não somar errado)
+    materias_unicas = df_minha_grade.drop_duplicates(subset=["Codigo"])
+    total_creditos = 0
+    
+    for _, row in materias_unicas.iterrows():
+        codigo = row['Codigo']
+        nome = str(row['Nome'])
+        
+        # Trunca nomes gigantes para não quebrar o visual da tabela
+        if len(nome) > 35: 
+            nome = nome[:32] + "..." 
+            
+        # Puxa o crédito da matéria
+        creditos = int(row.get('Creditos', 4)) if pd.notnull(row.get('Creditos')) else 4
+        total_creditos += creditos
+        
+        # Imprime alinhado bonitinho
+        print(f"🔸 {codigo} | {nome:<35} | {creditos} Créditos")
+        
+    print("-"*65)
+    print(f"✅ CARGA TOTAL ALOCADA: {total_creditos} / {MEU_LIMITE_CREDITOS} Créditos".center(65))
+    print("-"*65)
+
     # ---------------------------------------------------------
     # PASSO 5: Exportação Visual
     # ---------------------------------------------------------
-    print("\n[5/5] A gerar ficheiro Excel interativo...")
+    print("\n[5/5] Gerando arquivo Excel interativo...")
     criar_grade_visual(CSV_GRADE, PLANILHA_EXCEL)
 
     print("\n" + "="*70)

@@ -1,4 +1,3 @@
-# pip install PyMuPDF pandas
 import re
 import pandas as pd
 import fitz
@@ -58,11 +57,18 @@ def extrair_turmas_ofertadas(pdf_path):
     df_turmas = pd.DataFrame(turmas)
     return df_turmas.drop_duplicates() if not df_turmas.empty else df_turmas
 
-def simular_montagem_grade(df_ofertadas, csv_pendentes, pref_campus, pref_turno):
-    print(f"⚙️  Iniciando Motor de Grade (Filtro: {pref_turno} em {pref_campus})...")
+def simular_montagem_grade(df_ofertadas, csv_pendentes, pref_campus, pref_turno, limite_creditos=22):
+    print(f"⚙️  Iniciando Motor de Grade (Filtro: {pref_turno} em {pref_campus} | Limite: {limite_creditos} Créditos)...")
     
     try:
         df_pendentes = pd.read_csv(csv_pendentes)
+        
+        if 'Creditos' not in df_pendentes.columns:
+            df_pendentes['Creditos'] = 4
+
+        mapa_creditos = dict(zip(df_pendentes['Codigo'], df_pendentes['Creditos']))
+        creditos_acumulados = 0
+        
     except FileNotFoundError:
         print(f"❌ Erro: O arquivo '{csv_pendentes}' não foi encontrado.")
         return pd.DataFrame()
@@ -92,9 +98,10 @@ def simular_montagem_grade(df_ofertadas, csv_pendentes, pref_campus, pref_turno)
     # --- IDENTIFICA O PESO DAS RECOMENDAÇÕES ---
     nome_coluna_peso = 'Peso' if 'Peso' in turmas_uteis.columns else ('Peso_y' if 'Peso_y' in turmas_uteis.columns else 'Peso_x')
     if nome_coluna_peso not in turmas_uteis.columns:
-        turmas_uteis[nome_coluna_peso] = 1 # Fallback caso não tenha rodado o script de recomendações
+        turmas_uteis[nome_coluna_peso] = 1 
         
-    turmas_tentativas = turmas_uteis.sort_values(by=[nome_coluna_peso, 'Codigo'])
+    # 💥 O ERRO ESTAVA AQUI: Faltava o ascending=False para colocar o BCT (Peso 10000) no topo!
+    turmas_tentativas = turmas_uteis.sort_values(by=[nome_coluna_peso, 'Codigo'], ascending=[False, True])
 
     # --- CALENDÁRIO COMPLETO UFABC ---
     dias = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
@@ -121,6 +128,15 @@ def simular_montagem_grade(df_ofertadas, csv_pendentes, pref_campus, pref_turno)
         if codigo in materias_alocadas and quinzena == "Semanal": 
             continue
 
+        # ========================================================
+        # 🛑 O FREIO DA MOCHILA DE CRÉDITOS 🛑
+        # ========================================================
+        peso_materia = int(mapa_creditos.get(codigo, 4))
+        
+        if codigo not in materias_alocadas:
+            if creditos_acumulados + peso_materia > limite_creditos:
+                continue 
+
         if dia not in calendario or horario not in calendario[dia]:
             continue 
             
@@ -141,8 +157,13 @@ def simular_montagem_grade(df_ofertadas, csv_pendentes, pref_campus, pref_turno)
                 pode_encaixar = True
                 slot["II"] = codigo
                 
+        # 💥 O SEGUNDO ERRO ESTAVA AQUI: O código estava cortado!
         if pode_encaixar:
             grade_final.append(turma)
+            
+            if codigo not in materias_alocadas:
+                creditos_acumulados += peso_materia
+                
             materias_alocadas.add(codigo)
 
     df_grade_final = pd.DataFrame(grade_final)
@@ -156,34 +177,5 @@ def simular_montagem_grade(df_ofertadas, csv_pendentes, pref_campus, pref_turno)
     return df_grade_final
 
 if __name__ == "__main__":
-    # ====================================================================
-    # ⚙️ PAINEL DE CONFIGURAÇÃO (Altere aqui de forma fácil)
-    # ====================================================================
-    arquivo_oferta_pdf = "ajuste_matriculas_2026_2_turmas_v2.pdf"
-    arquivo_pendentes_csv = "materias_pendentes.csv"
-    
-    MEU_CAMPUS = "SA"       # Opções: "SBC", "SA" ou "AMBOS"
-    MEU_TURNO = "Noturno"    # Opções: "Noturno", "Matutino", "Vespertino" ou "QUALQUER"
-    # ====================================================================
-    
-    df_ofertas = extrair_turmas_ofertadas(arquivo_oferta_pdf)
-    
-    if not df_ofertas.empty:
-        print(f"✅ O extrator mapeou {len(df_ofertas)} horários ofertados.")
-        
-        df_minha_grade = simular_montagem_grade(df_ofertas, arquivo_pendentes_csv, MEU_CAMPUS, MEU_TURNO)
-        
-        print("\n" + "="*70)
-        print("🎓 SUA GRADE IDEAL MONTADA SEM CONFLITOS".center(70))
-        print("="*70)
-        
-        if not df_minha_grade.empty:
-            df_minha_grade.to_csv("minha_grade_perfeita.csv", index=False, encoding="utf-8")
-            visualizacao = df_minha_grade[['Dia', 'Horario', 'Quinzena', 'Codigo', 'Nome', 'Campus', 'Turno']]
-            print(visualizacao.to_string(index=False))
-            print(f"\n✅ Grade salva no arquivo 'minha_grade_perfeita.csv'!")
-        else:
-            print(f"\n❌ Nenhuma matéria coube na sua grade para {MEU_TURNO} em {MEU_CAMPUS}.")
-            print("   Dica: Altere as variáveis MEU_CAMPUS ou MEU_TURNO para 'AMBOS' ou 'QUALQUER'.")
-    else:
-        print("\n⚠️ O extrator não conseguiu ler as turmas.")
+    print("⚙️ Este é um módulo auxiliar do Grade Maker.")
+    print("🚀 Para montar sua grade, execute o arquivo principal: python grade_maker.py")
