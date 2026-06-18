@@ -2,6 +2,7 @@
 import re
 import pandas as pd
 import pdfplumber
+import os
 
 def extrair_grade_perfeita(pdf_path):
     materias_finais = {}
@@ -72,7 +73,7 @@ def extrair_grade_perfeita(pdf_path):
                     nomes_map = {}
                     claimed = set()
 
-                    # Fase 1: Matérias que estão isoladas nas quebras de linha
+                    # Fase 1: Matérias que estão isoladas nas quebras de linha (Filtrando Professores)
                     for idx, (linha_idx, codigo) in enumerate(code_indices):
                         start_bound = code_indices[idx-1][0] if idx > 0 else -1
                         end_bound = code_indices[idx+1][0] if idx < len(code_indices)-1 else len(linhas_comp)
@@ -81,15 +82,17 @@ def extrair_grade_perfeita(pdf_path):
                         lines_after = [i for i in range(linha_idx+1, end_bound)]
 
                         if lines_before and not lines_after:
-                            nomes_map[codigo] = " ".join([linhas_comp[i] for i in lines_before])
+                            txt_before = [linhas_comp[i] for i in lines_before if not re.search(r"(PROF\.|PROFA\.|DOCENTE|DR\.|DRA\.)", linhas_comp[i], re.IGNORECASE)]
+                            nomes_map[codigo] = " ".join(txt_before) if txt_before else "Disciplina UFABC"
                             claimed.update(lines_before)
                         elif lines_after and not lines_before:
-                            nomes_map[codigo] = " ".join([linhas_comp[i] for i in lines_after])
+                            txt_after = [linhas_comp[i] for i in lines_after if not re.search(r"(PROF\.|PROFA\.|DOCENTE|DR\.|DRA\.)", linhas_comp[i], re.IGNORECASE)]
+                            nomes_map[codigo] = " ".join(txt_after) if txt_after else "Disciplina UFABC"
                             claimed.update(lines_after)
 
-                    # Fase 2: Matérias muito próximas (pegando o texto restante da célula)
+                    # Fase 2: Matérias muito próximas (Filtrando Professores)
                     for idx, (linha_idx, codigo) in enumerate(code_indices):
-                        if codigo in nomes_map: continue
+                        if codigo in nomes_map and nomes_map[codigo] != "Disciplina UFABC": continue
 
                         start_bound = code_indices[idx-1][0] if idx > 0 else -1
                         end_bound = code_indices[idx+1][0] if idx < len(code_indices)-1 else len(linhas_comp)
@@ -98,13 +101,16 @@ def extrair_grade_perfeita(pdf_path):
                         unc_after = [i for i in range(linha_idx+1, end_bound) if i not in claimed]
 
                         if unc_before:
-                            nomes_map[codigo] = " ".join([linhas_comp[i] for i in unc_before])
+                            txt_before = [linhas_comp[i] for i in unc_before if not re.search(r"(PROF\.|PROFA\.|DOCENTE|DR\.|DRA\.)", linhas_comp[i], re.IGNORECASE)]
+                            nomes_map[codigo] = " ".join(txt_before) if txt_before else "Disciplina UFABC"
                             claimed.update(unc_before)
                         elif unc_after:
-                            nomes_map[codigo] = " ".join([linhas_comp[i] for i in unc_after])
+                            txt_after = [linhas_comp[i] for i in unc_after if not re.search(r"(PROF\.|PROFA\.|DOCENTE|DR\.|DRA\.)", linhas_comp[i], re.IGNORECASE)]
+                            nomes_map[codigo] = " ".join(txt_after) if txt_after else "Disciplina UFABC"
                             claimed.update(unc_after)
                         else:
-                            nomes_map[codigo] = "Disciplina UFABC"
+                            if codigo not in nomes_map:
+                                nomes_map[codigo] = "Disciplina UFABC"
 
                     # Fallback de segurança: Se os nomes estiverem numa coluna totalmente separada
                     nomes_validos = sum(1 for v in nomes_map.values() if len(v) > 4 and v != "Disciplina UFABC")
@@ -113,7 +119,7 @@ def extrair_grade_perfeita(pdf_path):
                         max_len = 0
                         for i, col in enumerate(colunas_texto):
                             if i in [idx_comp, idx_sit, idx_conc]: continue
-                            textos_validos = [x for x in col if len(x) > 4 and not re.match(r"^[A-Z]{3,4}\d{3,4}-\d{2}$", x)]
+                            textos_validos = [x for x in col if len(x) > 4 and not re.match(r"^[A-Z]{3,4}\d{3,4}-\d{2}$", x) and not re.search(r"(PROF\.|PROFA\.|DOCENTE|DR\.|DRA\.)", x, re.IGNORECASE)]
                             if textos_validos:
                                 avg_len = sum(len(x) for x in textos_validos) / len(textos_validos)
                                 if avg_len > max_len:
@@ -121,7 +127,7 @@ def extrair_grade_perfeita(pdf_path):
                                     idx_nome = i
                         
                         if idx_nome != -1:
-                            linhas_nome = [x for x in colunas_texto[idx_nome] if len(x) > 3]
+                            linhas_nome = [x for x in colunas_texto[idx_nome] if len(x) > 3 and not re.search(r"(PROF\.|PROFA\.|DOCENTE|DR\.|DRA\.)", x, re.IGNORECASE)]
                             for i, (linha_idx, codigo) in enumerate(code_indices):
                                 if i < len(linhas_nome):
                                     nomes_map[codigo] = linhas_nome[i]
@@ -136,7 +142,7 @@ def extrair_grade_perfeita(pdf_path):
                         nome = nomes_map.get(codigo, "Disciplina UFABC")
                         
                         # Limpa possíveis sujeiras do final do nome
-                        nome = re.sub(r"(OBR|OL|LIV|CH|Cred)", "", nome).strip()
+                        nome = re.sub(r"(OBR|OL|LIV|CH|Cred|Teoria|Prática)", "", nome).strip()
 
                         sit = situacoes[k] if k < len(situacoes) else None
                         conc = conceitos[k] if k < len(conceitos) else sit
@@ -150,25 +156,40 @@ def extrair_grade_perfeita(pdf_path):
                             }
 
     df = pd.DataFrame(list(materias_finais.values()))
+    
+    # ====================================================================
+    # 💎 ALINHADO COM O ANEXO_1B: SUBSTITUIÇÃO PELOS NOMES REAIS DA GRADE
+    # ====================================================================
     if not df.empty:
         df = df.sort_values(by="Codigo")
+        try:
+            caminho_anexo = "data/ordem_do_dia_-_anexo_1b.pdf"
+            if os.path.exists(caminho_anexo):
+                from scripts.gerar_pendentes import extrair_grade_ideal
+                df_ideal = extrair_grade_ideal(caminho_anexo)
+                if not df_ideal.empty:
+                    mapa_nomes_oficiais = dict(zip(df_ideal["Codigo"], df_ideal["Materia_Ideal"]))
+                    # Força a substituição para garantir nomes 100% limpos e idênticos aos do projeto pedagógico
+                    df["Materia"] = df["Codigo"].map(mapa_nomes_oficiais).fillna(df["Materia"])
+        except Exception as e:
+            print(f"⚠️ Nota: Não foi possível sincronizar com os nomes do anexo_1b ({e})")
+            
     return df
 
 if __name__ == "__main__":
     arquivo = "historico_11202322044.pdf"
+    pasta_saida = "OUTPUTS_CSV"
+    os.makedirs(pasta_saida, exist_ok=True)
+    caminho_csv = os.path.join(pasta_saida, "materias_feitas.csv")
 
     try:
         df_historico = extrair_grade_perfeita(arquivo)
 
         if not df_historico.empty:
-            df_historico.to_csv("materias_feitas.csv", index=False, encoding="utf-8")
+            df_historico.to_csv(caminho_csv, index=False, encoding="utf-8")
             print(f"\n✅ Sucesso! Extraídas {len(df_historico)} matérias aprovadas.")
-            print("\n--- Suas matérias concluídas (Salvas em materias_feitas.csv) ---")
             print(df_historico.to_string(index=False))
         else:
             print("\n⚠️ Nenhuma matéria validada foi capturada.")
-
-    except FileNotFoundError:
-        print(f"❌ Arquivo '{arquivo}' não encontrado na pasta.")
     except Exception as e:
         print(f"❌ Erro crítico: {e}")
