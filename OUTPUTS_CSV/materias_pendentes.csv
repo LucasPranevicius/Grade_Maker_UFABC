@@ -1,0 +1,215 @@
+Codigo,Materia_Ideal,Creditos,Peso
+BCJ0203-15,Fenômenos Eletromagnéticos,5,10000
+BCK0103-15,Física Quântica,3,10000
+BCK0103-22,Física Quântica,3,10000
+BCL0308-15,Bioquímica,4,10000
+BCM0504-15,Natureza da Informação,3,10000
+BCM0505-15,Processamento  da Informação  BCJ,4,10000
+BCN0404-15,Geometria Analítica,3,10000
+BCN0404-22,Geometria Analítica,3,10000
+BCN0405-15,Introdução às Equações Diferenciais Ordinárias,4,10000
+BCN0406-15,Introdução à  Probabilidade e à  Estatística  ESTO,4,10000
+BCN0407-15,Funções de Várias Variáveis,4,10000
+BCSO001-15,Base  Experimental das  Ciências Naturais  BIK,4,10000
+BIN406-15,-  Introdução à  Probabilidade e  à Estatística  ESTO,4,10000
+BIR0004-15,Bases Epistemológicas da Ciência Moderna,3,10000
+ESTI002-17,Eletrônica Digital,6,5000
+ESTI003-17,Transformadas em  Sinais e Sistemas  Lineares,4,5000
+ESTI004-17,Príncipios de  Comunicação          Créd.,20,5000
+ESTI005-17,Sinais Aleatórios  Opção  Limitada,4,5000
+ESTI006-17,Processamento Digital  de Sinais,4,5000
+ESTI007-17,Comunicação  Digital  ESTI,4,5000
+ESTI008-17,Teoria da  Informação e  Códigos  ESTI,4,5000
+ESTI010-17,Comunicações  Ópticas  Opção  Limitada,4,5000
+ESTI013-17,Sistemas  Microprocessados,4,5000
+ESTI015-17,Comunicações  Móveis  Opção Limitada,4,5000
+ESTI016-17,Fundamentos  de Fotônica  Opção  Limitada,4,5000
+ESTI017-17,Fundamentos de  Eletromagnetismo  Aplicado  ESTI,4,5000
+ESTI018-17,Ondas  Eletromagnéticas  Aplicadas  ESTI,4,5000
+ESTI019-17,Codificação de  Sinais  Multimídia          Créd.,18,5000
+ESTI020-17,Teoria de Filas e  Análise de  Desempenho  ESTI,4,5000
+ESTI902-17,TG I em  Engenharia de  Energia  Créd.,24,5000
+ESTI903-17,TG II em  Engenharia de  Energia  Créd.,20,5000
+ESTI904-17,TG III em  Engenharia de  Energia  Créd.,36,5000
+ESTI905-17,Estágio em  Engenharia de  Energia  ESTI,4,5000
+ESTO0005-17,Introdução às engenharias,2,5000
+ESTO0006-17,Materiais e suas propriedades,4,5000
+ESTO001-17,Circuitos Elétricos e  Fotônica,4,5000
+ESTO0013-17,Engenharia  econômica  ESTO,4,5000
+ESTO004-17,Instrumentação e  Controle,4,5000
+ESTO008-17,Mecânica dos Sólidos I,4,5000
+ESTO012-17,Princípios de  Administração,2,5000
+ESTO013-17,Engenharia Econômica,4,5000
+ESTO014-17,Termodinâmica  Aplicada I,4,5000
+ESTO015-17,Mecânica dos Fluidos I,4,5000
+ESTO016-17,Fenômenos de  Transporte,4,5000
+ESTO022-17,Transferência  de Calor I  Opção  Limitada,4,5000
+ESTO023-17,Transferência  de Calor II  Créd.,24,5000
+ESTO024-17,Mecânica dos  Fluidos II  ESTO,4,5000
+ESTO902-17,Engenharia  Unificada I  ESTI,4,5000
+ESTO903-17,Engenharia  Unificada II  ESTI,4,5000
+ESAE001-23,Aplicações  Estruturais de  Materiais  Compósitos  ESTA,4,1000
+ESAE003-23,Dinâmica de  Gases  ESTS,4,1000
+ESAE004-23,Métodos Computacionais para Análise Estrutural,4,1000
+ESAE005-23,Técnicas de  Análise  Estrutural  ESTS,4,1000
+ESTA001-17,Dispositivos Eletrônicos,5,1000
+ESTA002-17,Circuitos Elétricos I,5,1000
+ESTA003-17,Sistemas de Controle I,5,1000
+ESTA004-17,Circuitos Elétricos II,5,1000
+ESTA005-17,Análise de  Sistemas  Dinâmicos  Lineares  ESTA,4,1000
+ESTA006-17,Fotônica  Opção  Limitada   da Engenharia   ou,4,1000
+ESTA007-17,Eletrônica Analógica  Aplicada,5,1000
+ESTA008-17,Sistemas de Controle II,5,1000
+ESTA010-17,Sensores e  Transdutores  ESTA,4,1000
+ESTA011-17,Automação de  Sistemas  Industriais  Opção Limitada   da Engenharia   ou,4,1000
+ESTA013-17,Fundamentos  de Robótica  ESTA,4,1000
+ESTA014-17,Sistemas  CAD,4,1000
+ESTA016-17,Máquinas Elétricas,4,1000
+ESTA017-17,Laboratório de  Máquinas Elétricas,2,1000
+ESTA018-17,Eletromagnetismo  Aplicado  ESTO,4,1000
+ESTA019-17,Projeto  Assistido por  Computador  T-P-E-I,4,1000
+ESTA020-17,Modelagem e  Controle  ESTA,4,1000
+ESTA021-17,Introdução ao  Controle Discreto  ESTA,4,1000
+ESTA022-17,Teoria de  Acionamentos  Elétricos  ESTA,4,1000
+ESTA023-17,Introdução aos  Processos de  Fabricação  ESTA,4,1000
+ESTA902-17,TG I em  Engenharia IAR  Opção Limitada   da Engenharia   ou,3,1000
+ESTA903-17,TG II em  Engenharia IAR  Opção Limitada   da Engenharia   ou,2,1000
+ESTA904-17,TG III em  Engenharia IAR  ESTA,4,1000
+ESTA905-17,Estágio  Curricular em  Engenharia IAR  T-P-E-I,2,1000
+ESTG001-17,Custos  ESTO,4,1000
+ESTG002-17,Desenvolvimento  Integrado do  Produto  ESZG,4,1000
+ESTG003-17,Economia de  Empresas  ESTG,4,1000
+ESTG005-17,Engenharia  Econômica Aplic,4,1000
+ESTG006-17,Engenharia de segurança do trabalho,4,1000
+ESTG007-17,Engenharia  Logística  ESTG,4,1000
+ESTG008-17,Gerência de  Ativos  ESTG,4,1000
+ESTG009-17,Gestão de  Operações  BIS,4,1000
+ESTG011-17,Estatística  Aplicada a  Sistemas de  Gestão  ESTG,4,1000
+ESTG013-17,Pesquisa operacional,6,1000
+ESTG014-17,Planejamento e  Controle da  Produção  ESZG,4,1000
+ESTG016-17,Qualidade em  Sistemas  ESMA,4,1000
+ESTG017-17,Intro. Processos  de Fabricação  Metal- mecânico                  Créd.,24,1000
+ESTG019-17,"Tempos,  Métodos e  Arranjos Físicos          Créd.",20,1000
+ESTG020-17,Sistemas e processos de produção,4,1000
+ESTG021-17,Sistemas  CAD,4,1000
+ESTG022-17,Sistemas CAM,4,1000
+ESTG023-17,Organização do  Trabalho  ESTO,4,1000
+ESTG024-17,Sistemas de  Informações  Corporativas  ESGE,4,1000
+ESTG902-17,TG I em  Engenharia de  Gestão                  Créd.,12,1000
+ESTG903-17,TGII em  Engenharia de  Gestão                  Créd.,14,1000
+ESTG904-17,TG III em  Engenharia de  Gestão                  Créd.,22,1000
+ESTG905-17,Estágio em  Engenharia de  Gestão  ESTG,4,1000
+ESTS001-17,Dinâmica I  ESTI,4,1000
+ESTS004-17,Desempenho de  Aeronaves  ESAE,4,1000
+ESTS005-17,Dinâmica e Controle  de Veículos Espaciais  ESTS,4,1000
+ESTS006-17,Laboratório de  Guiagem,4,1000
+ESTS007-17,Estabilidade e  Controle de  Aeronaves  ESTS,4,1000
+ESTS008-17,Vibrações  Opção Limitada,4,1000
+ESTS011-17,Métodos  Computacionais  para Análise  Estrutural  ESMA,4,1000
+ESTS012-17,Aeroelasticidade  ESTS,4,1000
+ESTS013-17,Projeto de  Elementos  Estruturais de  Aeronaves I  ESTS,4,1000
+ESTS015-17,Combustão I  ESTA,4,1000
+ESTS016-17,Aerodinâmica I  ESTS,4,1000
+ESTS017-17,Sistemas de  Propulsão I  ESTS,4,1000
+ESTS018-17,Transferência de  Calor Aplicada a  Sistemas  Aeroespaciais  Opção Limitada,4,1000
+ESTS902-17,Trabalho de  Graduação I em  Engenharia  Aeroespacial  ESMA,4,1000
+ESTS903-17,Trabalho de  Graduação II em  Engenharia  Aeroespacial              Créditos,22,1000
+ESTS904-17,Trabalho de  Graduação III em  Engenharia  Aeroespacial              Créditos,24,1000
+ESTS905-17,Estágio Curricular  em Engenharia  Aeroespacial  ESTS,4,1000
+BHQ0302-13,- Identidade e Cultura,4,1
+ESAU010-23,Cartografia e  Geoprocessamento  ESTU,4,1
+ESHC010-13,Disciplina Desconhecida,4,1
+ESHR013-13,- Regime Internacional dos Direitos Humanos e a Estratégia Brasileira e  ESZP,4,1
+ESIF001-23,Codificação de  Sinais Multimídia,4,1
+EST016-17,-  Fenômenos de  Transporte  ESBM,4,1
+ESTB005-17,-  Ciência dos  Materiais  Biocompatíveis  Opção limitada  da Engenharia  Biomédica,4,1
+ESTB009-17,-  Princípios de  Imagens  Médicas  ESBM,4,1
+ESTB013-17,-  Biossegurança  ESTB,4,1
+ESTB015-17,-  Princípios de  Ética em  Serviços de  Saúde  BCS,4,1
+ESTB019-17,-  Bioestatística  ESTB,4,1
+ESTB020-17,-  Modelagem de  Sistemas  Dinâmicos II  ESBM,4,1
+ESTB022-17,-  Fundamentos  de Eletrônica  Analógica e  Digital   ESTB,4,1
+ESTB023-17,-  Física Médica I  ESTB,4,1
+ESTB024-17,-  Modelagem de  Sistemas  Dinâmicos I  ESBM,4,1
+ESTB025-17,-  Instrumentação  Biomédica  Opção limitada  da Engenharia  Biomédica,4,1
+ESTB028-17,-  Equipamentos  Médico- Hospitalares  Opção limitada  da Engenharia  Biomédica,4,1
+ESTB029-17,-  Análise e  Controle de  Sistemas  Mecânicos  ESBM,4,1
+ESTB030-17,-  Física Médica II  ESBM,4,1
+ESTB902-17,-  Trabalho de  Graduação em  Engenharia  Biomédica I  Créd.,20,1
+ESTB903-17,-  Trabalho de  Graduação em  Engenharia  Biomédica II  Créd.,10,1
+ESTB904-17,-  Trabalho de  Graduação em  Engenharia  Biomédica III  Créd.,16,1
+ESTB905-17,-  Estágio  Curricular em  Engenharia  Biomédica  ESTB,4,1
+ESTE0036-17,Economia da  Energia  Créd.,22,1
+ESTE014-17,Sistemas  Térmicos  ESTO,4,1
+ESTE015-17,Fundamentos de  Conversão de  Energia Elétrica  ESTO,4,1
+ESTE016-17,Introdução aos  Sistemas  Elétricos de  Potência  ESTE,4,1
+ESTE017-17,Operação de  Sistemas  Elétricos de  Potência  ESTE,4,1
+ESTE018-17,Fundamentos  de Sistemas  Dinâmicos  ESTA,4,1
+ESTE019-17,Instalações  Elétricas I  ESTE,4,1
+ESTE020-17,Instalações  Elétricas II  ESTE,4,1
+ESTE021-17,Termodinâmica  Aplicada II  ESTA,4,1
+ESTE022-17,Transferência de Calor I,4,1
+ESTE023-17,Transferência de Calor II,4,1
+ESTE024-17,Mecânica dos Fluidos II,4,1
+ESTE025-17,Fundamentos  de Máquinas  Térmicas  ESTE,4,1
+ESTE026-17,Laboratório de  Máquinas  Térmicas e  Hidraúlicas  ESTE,4,1
+ESTE027-17,Laboratorio de  Calor e Fluídos  ESTE,4,1
+ESTE028-17,Engenharia  Nuclear  ESTE,4,1
+ESTE029-17,Engenharia de  Combustíveis  Fósseis  ESTE,4,1
+ESTE030-17,Engenharia de  Petróleo e Gás  ESTE,4,1
+ESTE031-17,Engenharia de  Recursos  Hídricos  Opção  Limitada,4,1
+ESTE032-17,Engenharia Solar  Térmica  ESTE,4,1
+ESTE033-17,Engenharia  Solar  Fotovoltaica  ESTE,4,1
+ESTE034-17,Engenharia de  Biocombustiveis  ESTI,4,1
+ESTE035-17,Engenharia  Eólica          Créd.,18,1
+ESTE036-17,Economia da Energia,4,1
+ESTE037-17,Análise  Econômica de  Projetos  Energéticos  ESTO,4,1
+ESTU005-17,Climatologia  ESTU,4,1
+ESTU006-17,Geotecnia  ESTU,4,1
+ESTU007-17,Habitação e  Assentamentos  Humanos  ESTU,4,1
+ESTU009-17,Hidrologia  ESTU,4,1
+ESTU010-17,Microbiologia  Ambiental  ESTU,4,1
+ESTU011-17,Planejamento  Urbano e  Metropolitano  ESTU,4,1
+ESTU012-17,Poluição  Atmosférica  ESTU,4,1
+ESTU015-17,Saúde Ambiental  Opção Limitada,4,1
+ESTU019-17,Teoria do  Planejamento  Urbano e  Ambiental  ESTU,4,1
+ESTU020-17,Transferência de  Massa  Opção Limitada,4,1
+ESTU021-17,Transportes e  Mobilidade Urbana  ESTU,4,1
+ESTU023-17,Biomas  Brasileiros  ESTU,4,1
+ESTU024-17,Análise de  Sistemas e  Modelagem  Ambiental  ESMA,4,1
+ESTU025-17,Avaliação de  Impactos  Ambientais  ESTU,4,1
+ESTU026-17,Caracterização de  Matrizes  Ambientais  ESTU,4,1
+ESTU027-17,Fundamentos de  Geologia para  Engenharia  Créd.,19,1
+ESTU028-17,Hidráulica de  Condutos  Forçados  ESTU,4,1
+ESTU029-17,Hidráulica de  Condutos,4,1
+ESTU031-17,Recuperação de  Áreas  Degradadas  ESTU,4,1
+ESTU032-17,Representação  Gráfica de  Projetos  Ambientais e  Urbanos  ESTO,4,1
+ESTU033-17,Resíduos Sólidos  ESTU,4,1
+ESTU034-17,Sistemas de  Abastecimento de  Águas  ESTU,4,1
+ESTU035-17,Sistemas de  Esgotamento  Sanitário  Opção Limitada,4,1
+ESTU036-17,Sistemas de  Drenagem  Urbana  ESTU,4,1
+ESTU037-17,Sistemas de  Tratamento de  Água  ESTU,4,1
+ESTU038-17,Tratamento de  Águas Urbanas  Servidas  ESMA,4,1
+ESTU039-17,Regulação  Ambiental e  Urbanística  Créd.,23,1
+ESTU040-17,Projeto  Ambiental Urbano  ESTU,4,1
+ESTU902-17,Trabalho de  Graduação I em  Engenharia  Ambiental e  Urbana  Opção Limitada,4,1
+ESTU903-17,Trabalho de  Graduação II em  Engenharia  Ambiental e  Urbana  Opção Limitada,4,1
+ESTU904-17,Trabalho de  Graduação III em  Engenharia  Ambiental e  Urbana        Créd.,20,1
+ESTU905-17,Estágio   Curricular em   Engenharia   Ambiental e   Urbana   ESTU,4,1
+ESTX046-13,- Energia,4,1
+ESZG010-17,Planejamento e  Controle de  Projetos  Opção Limitada,4,1
+ESZG012-17,Projetos  Industriais    ESTG,4,1
+ESZG028-17,Automação  em Sistemas  de  Manufatura  ESTG,4,1
+ESZG043-17,Projeto virtual e  integrado de  manufatura  Opção  Limitada,4,1
+ESZP014-13,- Diversidade Cultural,4,1
+ESZP029-13,- Movimentos Sindicais,4,1
+ESZU006-13,- Economia,4,1
+ESZU025-13,Disciplina Desconhecida,4,1
+ESZX090-13,- Educação  Ambiental,4,1
+MCTA022-13,Redes de  Computadores  ESTA,4,1
+MCTA022-17,Redes de Computadores,4,1
+MCTA028-15,Programação  Estruturada          Créd.,22,1
+MCTB0009-17,Cálculo  Numérico  Créd.,24,1
+MCTB001-17,Álgebra Linear,6,1
+MCTB009-17,Cálculo Numérico,4,1
+MCTB010-13,Cálculo Vetorial e  Tensorial,4,1

@@ -21,20 +21,16 @@ def extrair_grade_ideal(pdf_path):
             
             janela = texto_corrido[pos_start:pos_start+150].strip()
             
-            # Tenta capturar Nome Exato + (Teoria) (Prática) (Estudo Individual)
             match_nome_cred = re.search(r"^([A-Za-zÀ-ÖØ-öø-ÿ\s\-\,\.]+?)\s+(\d+)\s+(\d+)\s+(\d+)", janela)
             
             if match_nome_cred:
                 nome = match_nome_cred.group(1).strip()
-                # Créditos na UFABC = Teoria + Prática
                 creditos = int(match_nome_cred.group(2)) + int(match_nome_cred.group(3))
             else:
-                # Fallback se a tabela estiver muito desconfigurada
                 match_nome = re.search(r"^([A-Za-zÀ-ÖØ-öø-ÿ\s\-]+)", janela)
                 nome = match_nome.group(1).strip() if match_nome else "Disciplina Desconhecida"
                 creditos = 4
                 
-            # Faxina bruta no nome (Tira lixos como "Eixo", "disciplina", etc)
             nome = re.split(r"(\sEixo\s|\s-\sdisciplina|\sOBR|\sOL|\sLIV|\sCH|\sCred|\sT\s*P\s*I)", nome, flags=re.IGNORECASE)[0].strip()
             
             if len(nome) > 3:
@@ -43,7 +39,6 @@ def extrair_grade_ideal(pdf_path):
                     
         df_todas = pd.DataFrame([{"Codigo": k, "Materia_Ideal": v["Nome"], "Creditos": v["Creditos"]} for k, v in grade_ideal.items()])
         
-        # Filtro das Engenharias que não importam
         prefixos_ignorados = ('ESTM', 'ESAM', 'ESBM', 'ESEN', 'ESGE', 'ESIN', 'ESIR', 'NH', 'DA', 'QA')
         df_filtrado = df_todas[~df_todas['Codigo'].str.startswith(prefixos_ignorados)].copy()
         
@@ -81,7 +76,6 @@ def identificar_pendencias(csv_feitas, df_grade_ideal):
         if "projeto dirigido" in nome and any("projeto dirigido" in n for n in nomes_concluidos):
             continue
             
-        # Se não caiu em nenhuma regra de exclusão, ela é pendente!
         pendentes.append(row)
         
     return pd.DataFrame(pendentes)

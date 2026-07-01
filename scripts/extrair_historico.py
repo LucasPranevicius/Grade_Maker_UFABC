@@ -33,7 +33,6 @@ def extrair_grade_perfeita(pdf_path):
                             continue
 
                         t = str(celula)
-                        # Corrige códigos fragmentados pelas quebras de linha do SIGAA
                         t = re.sub(r"([A-Z]{3,4}\d{3,4})\s*\n*\s*-\s*\n*\s*(\d{2})", r"\1-\2", t)
                         t = re.sub(r"([A-Z]{3,4}\d{2,3})\s*\n*\s*(\d{1,2})\s*-\s*(\d{2})", r"\1\2-\3", t)
 
@@ -44,7 +43,6 @@ def extrair_grade_perfeita(pdf_path):
                     idx_sit = -1
                     idx_conc = -1
 
-                    # Identifica as colunas chaves
                     for i, col in enumerate(colunas_texto):
                         if any(re.match(r"^[A-Z]{3,4}\d{3,4}-\d{2}$", x) for x in col):
                             idx_comp = i
@@ -63,7 +61,6 @@ def extrair_grade_perfeita(pdf_path):
                     if idx_comp == -1 or idx_sit == -1:
                         continue
 
-                    # --- Novo Sistema de Posse para os Nomes das Disciplinas ---
                     linhas_comp = colunas_texto[idx_comp]
                     code_indices = []
                     for i, linha_str in enumerate(linhas_comp):
@@ -73,7 +70,6 @@ def extrair_grade_perfeita(pdf_path):
                     nomes_map = {}
                     claimed = set()
 
-                    # Fase 1: Matérias que estão isoladas nas quebras de linha (Filtrando Professores)
                     for idx, (linha_idx, codigo) in enumerate(code_indices):
                         start_bound = code_indices[idx-1][0] if idx > 0 else -1
                         end_bound = code_indices[idx+1][0] if idx < len(code_indices)-1 else len(linhas_comp)
@@ -90,7 +86,6 @@ def extrair_grade_perfeita(pdf_path):
                             nomes_map[codigo] = " ".join(txt_after) if txt_after else "Disciplina UFABC"
                             claimed.update(lines_after)
 
-                    # Fase 2: Matérias muito próximas (Filtrando Professores)
                     for idx, (linha_idx, codigo) in enumerate(code_indices):
                         if codigo in nomes_map and nomes_map[codigo] != "Disciplina UFABC": continue
 
@@ -112,7 +107,6 @@ def extrair_grade_perfeita(pdf_path):
                             if codigo not in nomes_map:
                                 nomes_map[codigo] = "Disciplina UFABC"
 
-                    # Fallback de segurança: Se os nomes estiverem numa coluna totalmente separada
                     nomes_validos = sum(1 for v in nomes_map.values() if len(v) > 4 and v != "Disciplina UFABC")
                     if nomes_validos < len(code_indices):
                         idx_nome = -1
@@ -132,7 +126,6 @@ def extrair_grade_perfeita(pdf_path):
                                 if i < len(linhas_nome):
                                     nomes_map[codigo] = linhas_nome[i]
 
-                    # --- Montagem Final da Base ---
                     situacoes = [x for x in colunas_texto[idx_sit] if x in situacoes_validas]
                     conceitos = []
                     if idx_conc != -1:
@@ -141,7 +134,6 @@ def extrair_grade_perfeita(pdf_path):
                     for k, (linha_idx, codigo) in enumerate(code_indices):
                         nome = nomes_map.get(codigo, "Disciplina UFABC")
                         
-                        # Limpa possíveis sujeiras do final do nome
                         nome = re.sub(r"(OBR|OL|LIV|CH|Cred|Teoria|Prática)", "", nome).strip()
 
                         sit = situacoes[k] if k < len(situacoes) else None
@@ -157,9 +149,6 @@ def extrair_grade_perfeita(pdf_path):
 
     df = pd.DataFrame(list(materias_finais.values()))
     
-    # ====================================================================
-    # 💎 ALINHADO COM O ANEXO_1B: SUBSTITUIÇÃO PELOS NOMES REAIS DA GRADE
-    # ====================================================================
     if not df.empty:
         df = df.sort_values(by="Codigo")
         try:
@@ -169,7 +158,6 @@ def extrair_grade_perfeita(pdf_path):
                 df_ideal = extrair_grade_ideal(caminho_anexo)
                 if not df_ideal.empty:
                     mapa_nomes_oficiais = dict(zip(df_ideal["Codigo"], df_ideal["Materia_Ideal"]))
-                    # Força a substituição para garantir nomes 100% limpos e idênticos aos do projeto pedagógico
                     df["Materia"] = df["Codigo"].map(mapa_nomes_oficiais).fillna(df["Materia"])
         except Exception as e:
             print(f"⚠️ Nota: Não foi possível sincronizar com os nomes do anexo_1b ({e})")

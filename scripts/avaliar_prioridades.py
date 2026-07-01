@@ -1,8 +1,6 @@
 import pandas as pd
 
 def extrair_recomendacoes_catalogo(pdf_path):
-    # 💥 MATAMOS O TRANCA-GRADE 💥
-    # Retorna vazio instantaneamente para o grade_maker não quebrar nem perder tempo lendo PDF
     return {}
 
 def classificar_pendencias(csv_pendentes, csv_feitas, mapa_recs):
@@ -18,9 +16,6 @@ def classificar_pendencias(csv_pendentes, csv_feitas, mapa_recs):
     for _, row in df_pendentes.iterrows():
         codigo = str(row['Codigo']).upper()
         
-        # =================================================================
-        # 🚀 HIERARQUIA DITATORIAL E ABSOLUTA
-        # =================================================================
         if codigo.startswith(('BC', 'BI', 'BM')):
             peso_final = 10000  # 1. BCT no topo do Olimpo
             
@@ -37,7 +32,6 @@ def classificar_pendencias(csv_pendentes, csv_feitas, mapa_recs):
 
     df_pendentes['Peso'] = pesos
     
-    # Ordena a lista: Quem tem peso 10000 é avaliado primeiro, quem tem peso 1 é avaliado por último.
     df_pendentes = df_pendentes.sort_values(by=['Peso', 'Codigo'], ascending=[False, True])
 
     return df_pendentes

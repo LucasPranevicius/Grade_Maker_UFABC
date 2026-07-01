@@ -1,7 +1,7 @@
 import pandas as pd
 import re
 
-def gerar_roadmap_formatura(csv_pendentes, csv_feitas, pdf_catalogo, output_csv="OUTPUTS_CSV/trilha_formatura.csv"):
+def gerar_roadmap_formatura(csv_pendentes, csv_feitas, pdf_catalogo, output_csv="OUTPUTS_CSV/trilha_formaturaTESTE.csv"):
     print("\n🔮 Iniciando a simulação do Roadmap de Formatura...")
     
     try:
@@ -68,7 +68,6 @@ def gerar_roadmap_formatura(csv_pendentes, csv_feitas, pdf_catalogo, output_csv=
         creditos_quad = 0
         
         for mat in escolhidas:
-            # Agora puxamos o crédito REAL do PDF (ou 4 para as OLs geradas na hora)
             creditos = int(mat.get('Creditos', 4))
             creditos_quad += creditos
             
@@ -99,13 +98,13 @@ def gerar_roadmap_formatura(csv_pendentes, csv_feitas, pdf_catalogo, output_csv=
     df_trilha = pd.DataFrame(quadrimestres)
     df_trilha.to_csv(output_csv, index=False, encoding="utf-8")
     
-    print(f"✅ Roadmap completo gerado! Salvo em: {output_csv}")
+    # print(f" Roadmap completo gerado! Salvo em: {output_csv}")
     
-    print("\n" + "="*60)
-    print("🎓 PREVISÃO DOS SEUS PRÓXIMOS PASSOS".center(60))
-    print("="*60)
-    resumo = df_trilha[df_trilha['Quadrimestre'].str.contains("1 |2 ")]
-    print(resumo[['Quadrimestre', 'Codigo', 'Disciplina', 'Creditos']].to_string(index=False))
-    print("="*60)
+    # print("\n" + "="*60)
+    # print("🎓 PREVISÃO DOS SEUS PRÓXIMOS PASSOS".center(60))
+    # print("="*60)
+    # resumo = df_trilha[df_trilha['Quadrimestre'].str.contains("1 |2 ")]
+    # print(resumo[['Quadrimestre', 'Codigo', 'Disciplina', 'Creditos']].to_string(index=False))
+    # print("="*60)
     
     return df_trilha

@@ -79,7 +79,6 @@ def simular_montagem_grade(df_ofertadas, csv_pendentes, pref_campus, pref_turno,
         print("⚠️ Nenhuma matéria pendente sua está sendo ofertada neste quadrimestre.")
         return pd.DataFrame()
 
-    # --- APLICAÇÃO DOS FILTROS PERSONALIZADOS ---
     if pref_turno.upper() != "QUALQUER":
         turmas_uteis = turmas_uteis[turmas_uteis['Turno'].str.upper() == pref_turno.upper()]
         
@@ -95,15 +94,12 @@ def simular_montagem_grade(df_ofertadas, csv_pendentes, pref_campus, pref_turno,
     else:
         turmas_uteis['Nome'] = "Disciplina UFABC"
 
-    # --- IDENTIFICA O PESO DAS RECOMENDAÇÕES ---
     nome_coluna_peso = 'Peso' if 'Peso' in turmas_uteis.columns else ('Peso_y' if 'Peso_y' in turmas_uteis.columns else 'Peso_x')
     if nome_coluna_peso not in turmas_uteis.columns:
         turmas_uteis[nome_coluna_peso] = 1 
         
-    # 💥 O ERRO ESTAVA AQUI: Faltava o ascending=False para colocar o BCT (Peso 10000) no topo!
     turmas_tentativas = turmas_uteis.sort_values(by=[nome_coluna_peso, 'Codigo'], ascending=[False, True])
 
-    # --- CALENDÁRIO COMPLETO UFABC ---
     dias = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
     horarios_ufabc = [
         "08:00-10:00", "10:00-12:00", 
@@ -128,9 +124,6 @@ def simular_montagem_grade(df_ofertadas, csv_pendentes, pref_campus, pref_turno,
         if codigo in materias_alocadas and quinzena == "Semanal": 
             continue
 
-        # ========================================================
-        # 🛑 O FREIO DA MOCHILA DE CRÉDITOS 🛑
-        # ========================================================
         peso_materia = int(mapa_creditos.get(codigo, 4))
         
         if codigo not in materias_alocadas:
@@ -157,7 +150,6 @@ def simular_montagem_grade(df_ofertadas, csv_pendentes, pref_campus, pref_turno,
                 pode_encaixar = True
                 slot["II"] = codigo
                 
-        # 💥 O SEGUNDO ERRO ESTAVA AQUI: O código estava cortado!
         if pode_encaixar:
             grade_final.append(turma)
             
