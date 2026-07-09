@@ -4,7 +4,7 @@ import pandas as pd
 
 
 MEU_HISTORICO_PDF = "historico_11202322044.pdf"
-TURMAS_OFERTADAS_PDF = "ajuste_matriculas_2026_2_turmas_v2.pdf"
+TURMAS_OFERTADAS_PDF = "matriculas_2026_3_turmas_ofertadas.pdf"
 
 MEU_CAMPUS = "SA"       # Opções: "SBC", "SA" ou "AMBOS"
 MEU_TURNO = "Noturno"   # Opções: "Noturno", "Matutino", "Vespertino" ou "QUALQUER"

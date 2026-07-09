@@ -1,10 +1,14 @@
 Codigo,Dia,Horario,Quinzena,Turno,Campus,Materia_Ideal,Creditos,Nome
-ESTI015-17,Segunda,19:00-21:00,II,Noturno,SA,Comunicações  Móveis  Opção Limitada,4,Comunicações  Móveis  Opção Limitada
-ESTI015-17,Segunda,19:00-21:00,I,Noturno,SA,Comunicações  Móveis  Opção Limitada,4,Comunicações  Móveis  Opção Limitada
-BCN0407-15,Segunda,21:00-23:00,Semanal,Noturno,SA,Funções de Várias Variáveis,4,Funções de Várias Variáveis
-BCN0405-15,Terça,21:00-23:00,Semanal,Noturno,SA,Introdução às Equações Diferenciais Ordinárias,4,Introdução às Equações Diferenciais Ordinárias
-BCJ0203-15,Quarta,19:00-21:00,Semanal,Noturno,SA,Fenômenos Eletromagnéticos,5,Fenômenos Eletromagnéticos
-BCJ0203-15,Quarta,21:00-23:00,II,Noturno,SA,Fenômenos Eletromagnéticos,5,Fenômenos Eletromagnéticos
-BCJ0203-15,Quarta,21:00-23:00,I,Noturno,SA,Fenômenos Eletromagnéticos,5,Fenômenos Eletromagnéticos
-BIR0004-15,Sexta,19:00-21:00,II,Noturno,SA,Bases Epistemológicas da Ciência Moderna,3,Bases Epistemológicas da Ciência Moderna
-BIR0004-15,Sexta,21:00-23:00,II,Noturno,SA,Bases Epistemológicas da Ciência Moderna,3,Bases Epistemológicas da Ciência Moderna
+BCK0103-15,Segunda,19:00-21:00,II,Noturno,SA,Física Quântica,3,Física Quântica
+BCL0308-15,Segunda,19:00-21:00,I,Noturno,SA,Bioquímica,4,Bioquímica
+BCJ0203-15,Segunda,21:00-23:00,Semanal,Noturno,SA,Fenômenos Eletromagnéticos,5,Fenômenos Eletromagnéticos
+BCM0504-15,Terça,21:00-23:00,Semanal,Noturno,SA,Natureza da Informação,3,Natureza da Informação
+BCN0405-15,Quarta,19:00-21:00,Semanal,Noturno,SA,Introdução às Equações Diferenciais Ordinárias,4,Introdução às Equações Diferenciais Ordinárias
+BCN0404-15,Quarta,21:00-23:00,Semanal,Noturno,SA,Geometria Analítica,3,Geometria Analítica
+BCJ0203-15,Quinta,19:00-21:00,I,Noturno,SA,Fenômenos Eletromagnéticos,5,Fenômenos Eletromagnéticos
+BCJ0203-15,Quinta,19:00-21:00,II,Noturno,SA,Fenômenos Eletromagnéticos,5,Fenômenos Eletromagnéticos
+BCJ0203-15,Quinta,21:00-23:00,I,Noturno,SA,Fenômenos Eletromagnéticos,5,Fenômenos Eletromagnéticos
+BCJ0203-15,Quinta,21:00-23:00,II,Noturno,SA,Fenômenos Eletromagnéticos,5,Fenômenos Eletromagnéticos
+BCM0504-15,Sexta,19:00-21:00,I,Noturno,SA,Natureza da Informação,3,Natureza da Informação
+BCN0404-15,Sexta,19:00-21:00,II,Noturno,SA,Geometria Analítica,3,Geometria Analítica
+BCL0308-15,Sexta,21:00-23:00,Semanal,Noturno,SA,Bioquímica,4,Bioquímica
