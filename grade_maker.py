@@ -6,7 +6,7 @@ import pandas as pd
 MEU_HISTORICO_PDF = "historico_11202322044.pdf"
 TURMAS_OFERTADAS_PDF = "ajuste_matriculas_2026_2_turmas_v2.pdf"
 
-MEU_CAMPUS = "SBC"       # Opções: "SBC", "SA" ou "AMBOS"
+MEU_CAMPUS = "SA"       # Opções: "SBC", "SA" ou "AMBOS"
 MEU_TURNO = "Noturno"   # Opções: "Noturno", "Matutino", "Vespertino" ou "QUALQUER"
 MEU_LIMITE_CREDITOS = 22 # Limite da mochila! A UFABC recomenda entre 20 e 24.
 
